@@ -505,16 +505,18 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
                 'Content-Type' => 'application/json',
                 'x-wismo-auth-token' => $this->getAuthToken($storeId)
             ];
-    
+
             // Set headers and body (POST data)
             $this->curlClient->setHeaders($headers);
             $this->curlClient->post($url, $postData);
-    
+
             // Get response
             $response = $this->curlClient->getBody();
 
-            $responseCode = $http_response_header[0];
-            if (str_contains($responseCode, "HTTP/1.1 20")) {
+            // Get response status Code
+            $responseCode = $this->curlClient->getStatus();
+
+            if ($responseCode >= 200 && $responseCode < 300) {
                 $this->log(
                     self::LOG_PREFIX .
                     'track saved, trackId: ' . $trackId .
