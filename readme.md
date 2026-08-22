@@ -1,99 +1,136 @@
-# WISMOlabs Extension for Magento 2
+# WISMOlabs Magento 2 and Adobe Commerce Extension
 
-[Order & Shipping Tracking Suite extension for Magento](https://wismolabs.com/integrations/magento/?utm_source=github&utm_medium=magento&utm_campaign=extension) connects your store to the WISMOlabs platform, providing enhanced real-time tracking capabilities across 750+ carriers, 3PLs, and delivery companies. It also offers advanced notification capabilities, including programmable emails, SMS, and webhooks using the Liquid template engine. Platform has a built-in marketing engine that suggests, upsells, and cross-sells products within notifications, branded tracking pages, and other customer-facing components, creating better post-purchase experiences.
+The [WISMOlabs Order Status & Shipping Tracking Suite for Magento](https://wismolabs.com/integrations/magento/?utm_source=github&utm_medium=magento&utm_campaign=extension) connects Magento 2 and Adobe Commerce stores to the WISMOlabs post-purchase platform.
 
-This extension is verified and approved by Adobe and is officially published on the [Adobe Commerce Marketplace](https://commercemarketplace.adobe.com/wismolabs-tracking.html).
+WISMOlabs provides shipment tracking, branded tracking pages, adaptable shipment notifications, delivery analytics, and post-purchase customer experiences across more than 750 carriers, 3PLs, and delivery providers.
 
-## Important Information
+## Decisioning Before Messaging
 
-Order & Shipping Tracking Suite extension for Magento 2 does not require a WISMOlabs account to try. However, it is advisable to [create an account]([[https://wismolabs.com/magento/](https://wismolabs.com/integrations/magento/)]([https://wismolabs.com/magento/](https://wismolabs.com/integrations/magento/)?utm_source=github&utm_medium=magento&utm_campaign=extension)) to configure the branding of customer-facing components.
+WISMOlabs does not simply convert carrier events into notifications. The platform combines Magento order, shipment, customer, store, and product data with carrier, 3PL and customer signals to evaluate the complete delivery situation.
+
+It then determines whether action is needed and which response is appropriate. Once that decision is made, Liquid-powered templates dynamically adapt the selected action to the customer, order, shipment, carrier, and applicable business rules.
+
+This gives retailers two levels of control:
+
+1. Decision policies determine what should happen.
+2. Adaptable action templates determine precisely how the selected response is delivered.
+
+Retailers can create sophisticated post-purchase logic without building a difficult-to-maintain collection of disconnected notification flows.
+
+WISMOlabs customers typically reduce "Where Is My Order?" inquiries by 70-90%. Results vary based on shipment profile, the existing customer experience, and implementation.
+
+## Platform Capabilities
+
+- Real-time shipment tracking across more than 750 carriers, 3PLs, and delivery providers
+- Branded order and shipment tracking pages
+- Multi-shipment views for orders fulfilled in separate packages
+- Context-aware decisions for fulfillment, in-transit, out-for-delivery, delivered, delayed, customs, failed-delivery, and other situations
+- Adaptable email, SMS, push, webhook, and third-party actions
+- Liquid-powered templates for customer, order, shipment, carrier, and business-rule logic
+- Tracking links in Magento order and shipping confirmation emails
+- Tracking access from the Magento customer account area
+- Shipment, carrier-performance, fulfillment, customer-service-risk, and engagement analytics
+- Post-purchase engagement, education, cross-sell, and upsell actions when appropriate
+
+The extension is available through the [Adobe Commerce Marketplace](https://commercemarketplace.adobe.com/wismolabs-tracking.html).
+
+## Account, Trial, and Pricing
+
+The extension is free to install.
+
+You can evaluate the integration without creating a WISMOlabs account by using the basic unbranded tracking experience. A WISMOlabs account is required to configure branded tracking pages, decision policies, notifications, analytics, and other platform capabilities.
+
+WISMOlabs offers a free trial. Paid access includes the complete platform and uses volume-based pricing. Per-shipment rates generally range from $0.15 to $0.01 depending on shipment volume and commercial terms.
+
+- [Review WISMOlabs pricing](https://wismolabs.com/pricing/?utm_source=github&utm_medium=magento&utm_campaign=extension)
+- [Request a WISMOlabs account](https://wismolabs.com/request-account/?platform=Magento&utm_source=github&utm_medium=magento&utm_campaign=extension)
 
 ## Prerequisites
 
-Magento 2: This extension requires a working installation of Magento 2.
+- A working Magento 2 or Adobe Commerce installation
+- PHP 8.1 or later
+- Magento 2.4.7 or later
 
-## Installation Instructions
+## Installation
 
-To install the Order & Shipping Tracking Suite extension, follow these steps:
+From the root directory of your Magento installation, run:
 
-1. Log into Your Magento Server
-
-    - Log into your Magento 2 server and navigate to the root directory of your Magento installation.
-
-2. Install the Extension via Composer
-
-    Execute the following commands to install the WISMOlabs extension:
-
-    ```
-    composer require wismolabs/tracking
-    bin/magento module:enable Wismolabs_Tracking
-    bin/magento setup:upgrade
-    ```
-
-## Configuration Instructions
-
-After installing the Order & Shipping Tracking Suite extension for Magento, you need to configure it in the Magento admin panel:
-
-1.  **Step 1: Navigate to WISMOlabs Settings**
-
-    -   From your Magento Admin dashboard, go to Stores > Configuration.
-
-        ![Navigate to WISMOlabs Settings step 1](docs/images/wismolabs-magento-extension-settings-step1.png)
-
-    -   In the left sidebar, locate Shipping Settings under Sales.
-
-        ![Navigate to WISMOlabs Settings step 2](docs/images/wismolabs-magento-extension-settings-step2.png)
-
-    -   Expand WISMOlabs Order and Shipment Tracking to access settings and configurations.
-
-2.  **Step 2: Configure the Fields**
-
-    ![WISMOlabs Extension Settings](docs/images/wismolabs-magento-extension-settings.png)
-
-    If you are just trying out the extension and don't have the configuration you may leave theses field in their default state.
-
-    -   **Slug**: Copy the "Slug" from the WISMOlabs admin dashboard under Settings > Magento Connect app and paste it into the "Slug" field.
-
-    -   **Retailer ID**: Copy the "Retailer ID" from the WISMOlabs admin dashboard under Settings > Magento Connect app and paste it into the "Retailer ID" field.
-
-    -   **Token (Optional)**: Copy the "Authorization Token" from the Magento Connect section in your WISMOlabs admin dashboard and paste it into the "Token" field. This token is required for features like email/SMS/webhooks notifications and advanced analytics.
-
-    -   **Select Data Fields to Pass to WISMOlabs**: Use Ctrl (Cmd on Mac) + click to select multiple fields. Include fields such as store_id, group_id, prefix, lastname, dob, etc., based on your requirements.
-
-3.  **Step 3: Optional Settings**
-
-    -   **Include WISMOlabs Link into Shipping Confirmation Email**: Set to "Yes" if you want the tracking link to appear in shipping confirmation emails.
-
-    -   **Customize Email [Track My Order Button]**: Modify the HTML/CSS code for the tracking button if needed. Use the placeholder {{WISMOLINK}} to insert the tracking link dynamically.
-
-    -   **Include WISMOlabs Link into the Order Confirmation Email**: Set to "Yes" only if the Authorization Token is enabled and you have a working WISMOlabs account.
-
-    -   **Place WISMOlabs Link under Customer's Order History Pages**: Set to "Yes" to add the tracking link to the customer's order history section.
-
-    -   **Use MySQL Queue**: Enable if you want to handle asynchronous tasks via MySQL.
-
-    -   **Enable Detailed Logging for Debugging**: Set to "Yes" to log details in var/log/debug.log with the Wismolabs_Tracking_Helper prefix for troubleshooting.
-
-4.  **Step 4: Save Configuration**
-
-    -   Click the Save Config button in the top-right corner.
-
-    -   Flush the cache by navigating to System > Cache Management and clicking Flush Magento Cache.
-
-## Additional Information
-
-Support: For any issues or support requests, please contact our support team at [wismolabs.com](https://wismolabs.com/)
-
-Documentation: For more details on configuration options and using the WISMOlabs platform, visit our help center.
-
-### Uninstall Instructions
-
-If you need to uninstall the extension, you can do so using the following commands:
-
-```
-bin/magento module:disable Wismolabs_Tracking
-composer remove wismolabs/tracking
+```bash
+composer require wismolabs/tracking
+bin/magento module:enable Wismolabs_Tracking
 bin/magento setup:upgrade
 ```
 
-By using WISMOlabs, you can provide your customers with up-to-date shipment information and personalized post-purchase communications to boost customer satisfaction and loyalty.
+Flush the Magento cache after installation:
+
+```bash
+bin/magento cache:flush
+```
+
+## Configuration
+
+### Step 1: Open WISMOlabs Settings
+
+From the Magento Admin dashboard:
+
+1. Go to **Stores > Configuration**.
+2. Locate **Shipping Settings** under **Sales**.
+3. Expand **WISMOlabs Order and Shipment Tracking**.
+
+![Navigate to WISMOlabs Settings step 1](docs/images/wismolabs-magento-extension-settings-step1.png)
+
+![Navigate to WISMOlabs Settings step 2](docs/images/wismolabs-magento-extension-settings-step2.png)
+
+### Step 2: Configure the Connection
+
+![WISMOlabs Extension Settings](docs/images/wismolabs-magento-extension-settings.png)
+
+If you are evaluating basic unbranded tracking without an account, you can leave the account-specific fields at their default values.
+
+For full platform access, configure the following fields using the values found under **Settings > Magento Connect** in the WISMOlabs dashboard:
+
+- **Slug:** Enter the Slug supplied in the WISMOlabs dashboard.
+- **Retailer ID:** Enter the Retailer ID supplied in the WISMOlabs dashboard.
+- **Authorization Token:** Enter the token supplied in the Magento Connect section. The token enables account-connected features such as notifications, webhooks, analytics, and advanced platform functionality.
+- **Data Fields:** Select the Magento fields required for your configured customer experience and business rules. Use Ctrl on Windows or Cmd on macOS to select multiple fields.
+
+Only transmit data required for the configured implementation and your applicable privacy requirements.
+
+### Step 3: Configure Optional Tracking Features
+
+- **Include WISMOlabs Link in Shipping Confirmation Email:** Adds a tracking link to Magento shipping confirmation emails.
+- **Customize the Track My Order Button:** Modify the button's HTML or CSS and use `{{WISMOLINK}}` as the dynamic tracking-link placeholder.
+- **Include WISMOlabs Link in Order Confirmation Email:** Adds a tracking link to Magento order confirmation emails when an active WISMOlabs account and Authorization Token are configured.
+- **Add WISMOlabs Link to Customer Order History:** Adds tracking access to the customer's Magento account area.
+- **Use MySQL Queue:** Enables asynchronous processing through MySQL.
+- **Enable Detailed Logging:** Writes troubleshooting information to `var/log/debug.log` using the `Wismolabs_Tracking_Helper` prefix.
+
+### Step 4: Save and Test
+
+1. Click **Save Config**.
+2. Flush the Magento cache.
+3. Place or select a test order.
+4. Confirm that order and shipment data reach WISMOlabs.
+5. Verify the tracking link, tracking page, and any configured actions before enabling them for customers.
+
+## Support and Documentation
+
+- [WISMOlabs Help Center](https://help.wismolabs.com/)
+- [Magento integration information](https://wismolabs.com/integrations/magento/)
+- [Contact WISMOlabs](https://wismolabs.com/contact-us/)
+- Email: [support@wismolabs.com](mailto:support@wismolabs.com)
+
+## Uninstall
+
+From the root directory of your Magento installation, run:
+
+```bash
+bin/magento module:disable Wismolabs_Tracking
+composer remove wismolabs/tracking
+bin/magento setup:upgrade
+bin/magento cache:flush
+```
+
+## License
+
+This extension is distributed under the MIT License.
