@@ -6,7 +6,7 @@ WISMOlabs provides shipment tracking, branded tracking pages, adaptable shipment
 
 ## Decisioning Before Messaging
 
-WISMOlabs does not simply convert carrier events into notifications. The platform combines Magento order, shipment, customer, store, and product data with carrier, 3PL and customer signals to evaluate the complete delivery situation.
+WISMOlabs does not simply convert carrier events into notifications. The platform combines Magento order, shipment, customer, store, and product data with carrier, 3PL, and customer signals to evaluate the complete delivery situation.
 
 It then determines whether action is needed and which response is appropriate. Once that decision is made, Liquid-powered templates dynamically adapt the selected action to the customer, order, shipment, carrier, and applicable business rules.
 
